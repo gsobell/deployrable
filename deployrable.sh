@@ -43,7 +43,7 @@ while true; do
 		esac
 		done; break;;
         [Nn]* ) exit;;
-	* ) echo "Please answer (y/n).";;
+		* ) echo "Please answer (y/n).";;
     esac
 done
 
