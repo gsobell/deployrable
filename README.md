@@ -25,6 +25,7 @@ curl https://raw.githubusercontent.com/gsobell/deployrable/deployrable.sh | sh
 - Further interactivity
 - Compatibility across non-pacman distros
 - Pacstall option, when it becomes viable
+- Make seperate PACKLIST option for Wayland
 
 ##
 This software is provided "as is", without warranty of any kind. *Caveat emptor*.
