@@ -28,7 +28,7 @@ while true; do
 		cd paru
 		makepkg -si;;	
 	[Nn]* ) break;;
-	* ) echo 'Please answer (y/n).'
+	* ) echo 'Please answer (y/n).';;
 	esac
 done
 
