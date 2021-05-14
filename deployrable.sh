@@ -31,7 +31,7 @@ fi
 while true; do
 	read -p "Install packages at this time? (Y/n)" yn
 	case $yn in
-        [Yy]*) ls /home/$USER/dotfiles/packlist > packversion.txt
+        [Yy]* ) ls /home/$USER/dotfiles/packlist > packversion.txt
 		select PACKLIST in $(cat packversion.txt) exit; do 
    		case $PACKLIST in
       		exit) echo "exiting"
@@ -42,7 +42,7 @@ while true; do
 		rm /home/$USER/packversion.txt
 		esac
 		done; break;;
-        [Nn]*) break;exit;;
+        [Nn]* ) break;exit;;
 		* ) echo "Please answer (y/n)."
 		break;;
     esac
