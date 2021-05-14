@@ -42,8 +42,9 @@ while true; do
 		rm /home/$USER/packversion.txt
 		esac
 		done; break;;
-        [Nn]* ) exit;;
-		* ) echo "Please answer (y/n).";;
+        [Nn]* ) break;exit;;
+		*) echo "Please answer (y/n)."
+		break;;
     esac
 done
 
