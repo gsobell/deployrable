@@ -26,10 +26,8 @@ then
 	git clone https://aur.archlinux.org/paru.git
 	cd paru
 	makepkg -si
-		
+else break		
 fi
-
-
 
 while true; do
 	read -p "Install packages at this time? (Y/n)" yn
