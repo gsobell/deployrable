@@ -28,8 +28,8 @@ while true; do
 		git clone https://aur.archlinux.org/paru.git
 		cd paru
 		makepkg -si;;	
-	[Nn]* ) break;;
-	* ) echo 'Please answer (y/n).';;
+	[Nn]* ) break;exit;;
+	* ) echo "Please answer (y/n).";;
 	esac
 done
 
@@ -47,7 +47,7 @@ while true; do
 		rm /home/$USER/packversion.txt
 		esac
 		done; break;;
-        [Nn]* ) break;;
+        [Nn]* ) exit;;
 	* ) echo "Please answer (y/n).";;
     esac
 done
