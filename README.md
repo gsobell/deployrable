@@ -1,5 +1,5 @@
 # deployrable
-Bash script for deploying dotfiles and installing selected packages.
+Bash script for deploying dotfiles and selected packages primarily on live enviroments and fresh installs.
 
 ## Usage
 Run either of the following in the home directory.
@@ -21,11 +21,13 @@ curl https://raw.githubusercontent.com/gsobell/deployrable/deployrable.sh | sh
 - Install most recent list of packages (PACKLIST)
 
 ### Future
-- Use feh to set wallpaper
 - Further interactivity
+- Optional user supplied dotfile repo
+- Use feh to set wallpaper
 - Compatibility across non-pacman distros
 - Pacstall option, when it becomes viable
 - Make seperate PACKLIST option for Wayland
+- Diff functionality for PACKLIST
 
 ##
 This software is provided "as is", without warranty of any kind. *Caveat emptor*.
