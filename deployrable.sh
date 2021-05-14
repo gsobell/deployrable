@@ -1,13 +1,55 @@
 #!/bin/bash
 
+echo 'deployrable v0.1'
+sleep 1
+echo 'MIT License, Copyright (c) 2021 gsobell'
+clear
+
+echo 'Cloning dotfile repo to local host'
 git clone https://github.com/gsobell/dotfiles.git
 
+# Initial dotfile deployment
+mkdir -pv /home/$USER/.i3
 
+mv -fv /home/$USER/dotfiles/.Xresources		/home/$USER/.Xresources
+mv -fv /home/$USER/dotfiles/.bashrc		/home/$USER/.bashrc
+mv -fv /home/$USER/dotfiles/.bash_profile	/home/$USER/.bash_profile
+mv -fv /home/$USER/dotfiles/.vimrc		/home/$USER/.vimrc
+mv -fv /home/$USER/dotfiles/.i3/config		/home/$USER/.i3/config
+
+# Setting natural scrolling > Use xmodmap instead, look into libinput
+
+echo 'Installing Paru'
 sudo pacman -S --needed base-devel
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
 
-cd ~/dotfiles/packlist
-ls -t | head -n1 | cat | paru -Syu 
+while true; do
+	read -p "Install packages at this time? (Y/n)" yn
+	case $yn in
+        [Yy]* ) ls /home/$USER/dotfiles/packlist > packversion.txt
+		select PACKLIST in $(cat packversion.txt) exit; do 
+   		case $PACKLIST in
+      		exit) echo "exiting"
+       	 	break ;;
+       		*) echo "$PACKLIST"
+		echo Installing "$PACKLIST";
+		paru -S - < /home/"$USER"/dotfiles/packlist/"$PACKLIST"
+		rm /home/$USER/packversion.txt
+		esac
+		done; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+echo "Cleaning up."
+mv /home/$USER/Paru /home/$USER/.Paru
+clear
+sleep 1
+
+echo "Setup complete, exiting deployrable."
+sleep 1
+
 exit 0
