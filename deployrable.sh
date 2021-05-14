@@ -27,8 +27,6 @@ then
 	cd paru
 	makepkg -si
 		
-else exit
-		
 fi
 
 
