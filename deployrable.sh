@@ -20,6 +20,7 @@ mv -fv /home/$USER/dotfiles/.i3/config		/home/$USER/.i3/config
 # Setting natural scrolling > Use xmodmap instead, look into libinput
 
 echo 'Installing Paru'
+
 while true; do
 	read -p "Install Paru at this time? (Y/n)" yn
 	case $yn in
