@@ -20,10 +20,17 @@ mv -fv /home/$USER/dotfiles/.i3/config		/home/$USER/.i3/config
 # Setting natural scrolling > Use xmodmap instead, look into libinput
 
 echo 'Installing Paru'
-sudo pacman -S --needed base-devel
-git clone https://aur.archlinux.org/paru.git
-cd paru
-makepkg -si
+while true; do
+	read -p "Install Paru at this time? (Y/n)" yn
+	case $yn in
+	[Yy]* ) sudo pacman -S --needed base-devel
+		git clone https://aur.archlinux.org/paru.git
+		cd paru
+		makepkg -si;;	
+	[Nn]* ) break;;
+	* ) echo 'Please answer (y/n).'
+	esac
+done
 
 while true; do
 	read -p "Install packages at this time? (Y/n)" yn
@@ -39,16 +46,19 @@ while true; do
 		rm /home/$USER/packversion.txt
 		esac
 		done; break;;
-        [Nn]* ) exit;;
-        * ) echo "Please answer yes or no.";;
+        [Nn]* ) break;;
+	* ) echo "Please answer (y/n).";;
     esac
 done
 
-echo "Cleaning up."
-mv /home/$USER/Paru /home/$USER/.Paru
 clear
+echo 'Cleaning up.'
 sleep 1
-
+mv /home/$USER/Paru 	/home/$USER/.Paru
+mv /home/$USER/dotfiles /home/$USER/.dotfiles
+echo 'One moment please.'
+sleep 1
+clear
 echo "Setup complete, exiting deployrable."
 sleep 1
 
