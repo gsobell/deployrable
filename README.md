@@ -23,7 +23,6 @@ curl https://raw.githubusercontent.com/gsobell/deployrable/home/init.sh        |
 - Install most recent list of packages (PACKLIST)
 
 ### Future
-- Fix piping curl to sh
 - Further interactivity
 - Optional user supplied dotfile repo
 - Use feh to set wallpaper
