@@ -32,8 +32,7 @@ if ! command -v paru &> /dev/null
 		break
 fi
 
-while :
-do
+# while true do
 	read -p "Install packages at this time? (Y/n)" yn
 	case $yn in
         [Yy]*) ls /home/$USER/dotfiles/packlist > packversion.txt
@@ -51,7 +50,7 @@ do
 #		* ) echo "Please answer (y/n)."
 #		break; exit;;
     esac
-done
+# done
 
 clear
 echo 'Cleaning up.'
