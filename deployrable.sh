@@ -5,6 +5,8 @@ sleep 1
 echo 'MIT License, Copyright (c) 2021 gsobell'
 clear
 
+cd /home/$USER/
+
 echo 'Cloning dotfile repo to local host'
 git clone https://github.com/gsobell/dotfiles.git
 
@@ -31,27 +33,27 @@ if ! command -v paru &> /dev/null
 		fi
 
 
-		read -p "Install packages at this time? (Y/n)" yn
-case $yn in
-	[Yy]* ) 
-		
-		ls /home/$USER/dotfiles/packlist > packversion.txt
-		select PACKLIST in $(cat packversion.txt) exit; do 
-   		
-		case $PACKLIST in
-		exit) echo "exiting" ; 
+while true; do
+	read -p "Install packages at this time? (Y/n)" yn
+	case $yn in
+        [Yy]* ) ls /home/$USER/dotfiles/packlist > packversion.txt
+		select PACKLIST in $(cat packversion.txt) exit; do
+   		case $PACKLIST in
+      		exit) echo "exiting"
        	 	break ;;
-       				
-		*) echo "$PACKLIST" ;
+       		*) echo "$PACKLIST"
 		echo Installing "$PACKLIST";
-		paru -S - < /home/"$USER"/dotfiles/packlist/"$PACKLIST";
-		rm /home/$USER/packversion.txt;
-		
+		paru -S - < /home/"$USER"/dotfiles/packlist/"$PACKLIST"
+		rm /home/$USER/packversion.txt
 		esac
 		done; break;;
-        
-	[Nn]*) break ;
-esac
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+
+##
+
 
 clear
 echo 'Cleaning up.'
