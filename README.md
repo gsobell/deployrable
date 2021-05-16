@@ -23,12 +23,11 @@ curl https://raw.githubusercontent.com/gsobell/deployrable/home/deployrable.sh |
 - Install most recent list of packages (PACKLIST)
 
 ### Future
-- Fix curl pipe to sh
+- Fix piping curl to sh
 - Further interactivity
 - Optional user supplied dotfile repo
 - Use feh to set wallpaper
 - Compatibility across non-pacman distros
-- Pacstall option, when it becomes viable
 - Make seperate PACKLIST option for Wayland
 - Diff functionality for PACKLIST
 
