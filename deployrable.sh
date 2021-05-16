@@ -33,7 +33,6 @@ if ! command -v paru &> /dev/null
 		fi
 
 
-while true; do
 	read -p "Install packages at this time? (Y/n)" yn
 	case $yn in
         [Yy]* ) ls /home/$USER/dotfiles/packlist > packversion.txt
@@ -47,9 +46,9 @@ while true; do
 		rm /home/$USER/packversion.txt
 		esac
 		done; break;;
-        [Nn]* ) exit;;
+        [Nn]* ) break;;
+        * ) echo "Please answer yes or no.";;
     esac
-done
 
 ##
 
