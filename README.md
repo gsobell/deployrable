@@ -4,8 +4,8 @@ Bash script for deploying dotfiles and selected packages primarily on live envir
 ## Usage
 You will be prompted for root if you choose to install PACKLIST.
 ```shell
-curl https://raw.githubusercontent.com/gsobell/deployrable/home/deployrable.sh > deployrable.sh
-chmod -x ./deployrable.sh ; ./deployrable.sh
+curl https://raw.githubusercontent.com/gsobell/deployrable/home/deployrable.sh > deployrable.sh ;
+chmod +x ./deployrable.sh ; ./deployrable.sh
 ```
 
 
