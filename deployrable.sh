@@ -32,7 +32,7 @@ if ! command -v paru &> /dev/null
 	else    echo 'Paru already installed.'
 		fi
 
-
+		{
 	read -p "Install packages at this time? (Y/n)" yn
 	case $yn in
         [Yy]* ) ls /home/$USER/dotfiles/packlist > packversion.txt
@@ -49,8 +49,7 @@ if ! command -v paru &> /dev/null
         [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
     esac
-
-##
+}
 
 
 clear
