@@ -32,7 +32,7 @@ if ! command -v paru &> /dev/null
 
 	read -p "Install packages at this time? (Y/n)" yn
 	case $yn in
-        [Yy]*) ls /home/$USER/dotfiles/packlist > packversion.txt
+        Y|y) ls /home/$USER/dotfiles/packlist > packversion.txt
 		select PACKLIST in $(cat packversion.txt) exit; do 
    			case $PACKLIST in
       				exit) echo "exiting" ; 
@@ -43,7 +43,7 @@ if ! command -v paru &> /dev/null
 				rm /home/$USER/packversion.txt;
 			esac
 		done; break;;
-        [Nn]*) break;;
+        N|n) break;;
 		* ) echo "Please answer (y/n)."
 		break; exit;;
 	esac
