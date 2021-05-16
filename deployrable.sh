@@ -52,7 +52,6 @@ if ! command -v paru &> /dev/null
 }
 
 
-clear
 echo 'Cleaning up.'
 sleep 1
 rm -fdr /home/$USER/dotfiles
