@@ -34,9 +34,8 @@ if ! command -v paru &> /dev/null
 	fi
 
 	
-while true; do
 	read -p "Install packages at this time? (Y/n)" yn
-	sleep 1
+while true; do
 	case $yn in
 	[Yy]* ) ls /home/$USER/dotfiles/packlist > packversion.txt
 	select PACKLIST in $(cat packversion.txt) exit; do
