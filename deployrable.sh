@@ -66,3 +66,4 @@ echo "Setup complete, exiting deployrable."
 sleep 1
 
 exit 0
+rm -- "$0"
