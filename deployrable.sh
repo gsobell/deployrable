@@ -59,12 +59,12 @@ done
 
 if ! command -v nitrogen &> /dev/null
 	then
+		echo 'Not setting wallaper'
+
+	else
 		curl https://unsplash.com/photos/Dksk8szLRN0/ > .default_wallpaper.png
 		nitrogen /home/$USER/.default_wallpaper.png
 		echo 'Wallpaper set.'
-
-	else
-		echo 'Not setting wallaper'
 
 fi
 
