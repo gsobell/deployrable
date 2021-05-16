@@ -6,10 +6,6 @@ Run either of the following in the home directory.
 You will be prompted for root if you choose to install PACKLIST.
 
 ```shell
-curl https://git.io/JssGR | sh
-```
-
-```shell
 curl https://raw.githubusercontent.com/gsobell/deployrable/home/deployrable.sh | sh
 ```
 ## Features
