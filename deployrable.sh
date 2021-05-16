@@ -26,6 +26,8 @@ if ! command -v paru &> /dev/null
 		git clone https://aur.archlinux.org/paru.git
 		cd paru
 		makepkg -si		
+		mv /home/$USER/Paru 	/home/$USER/.Paru
+	else    echo 'Paru already installed.'
 fi
 
 while true
@@ -35,16 +37,16 @@ do
         [Yy]*) ls /home/$USER/dotfiles/packlist > packversion.txt
 		select PACKLIST in $(cat packversion.txt) exit; do 
    			case $PACKLIST in
-      			exit) echo "exiting"
+      			exit) echo "exiting" ; 
        	 		break ;;
-       			*) echo "$PACKLIST"
+       			*) echo "$PACKLIST" ;
 			echo Installing "$PACKLIST";
-			paru -S - < /home/"$USER"/dotfiles/packlist/"$PACKLIST"
-			rm /home/$USER/packversion.txt
+			paru -S - < /home/"$USER"/dotfiles/packlist/"$PACKLIST";
+			rm /home/$USER/packversion.txt;
 			esac
 		done; break;;
         [Nn]*) break;;
-		*) echo "Please answer (y/n)."
+		* ) echo "Please answer (y/n)."
 		break;;
     esac
 done
@@ -52,11 +54,9 @@ done
 clear
 echo 'Cleaning up.'
 sleep 1
-mv /home/$USER/Paru 	/home/$USER/.Paru
-mv /home/$USER/dotfiles /home/$USER/.dotfiles
+rm -fdr /home/$USER/dotfiles
 echo 'One moment please.'
 sleep 1
-clear
 echo "Setup complete, exiting deployrable."
 sleep 1
 
