@@ -2,7 +2,7 @@
 Bash script for deploying dotfiles and selected packages primarily on live enviroments and fresh installs.
 
 ## Usage
-Run either of the following in the home directory.
+Run the following in the home directory.
 You will be prompted for root if you choose to install PACKLIST.
 
 ```shell
