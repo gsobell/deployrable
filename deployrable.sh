@@ -21,6 +21,8 @@ mv -fv /home/$USER/dotfiles/.i3/config		/home/$USER/.i3/config
 
 # Setting natural scrolling > Use xmodmap instead, look into libinput
 
+read -p "Install packages at this time? (Y/n)" yn
+
 if ! command -v paru &> /dev/null
 	then
 		echo 'Installing Paru'
@@ -34,7 +36,6 @@ if ! command -v paru &> /dev/null
 	fi
 
 	
-	read -p "Install packages at this time? (Y/n)" yn
 while true; do
 	case $yn in
 	[Yy]* ) ls /home/$USER/dotfiles/packlist > packversion.txt
