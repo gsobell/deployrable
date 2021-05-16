@@ -48,7 +48,6 @@ while true; do
 		esac
 		done; break;;
         [Nn]* ) exit;;
-        * ) echo "Please answer yes or no.";;
     esac
 done
 
