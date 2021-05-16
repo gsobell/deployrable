@@ -27,7 +27,9 @@ if ! command -v paru &> /dev/null
 		cd paru
 		makepkg -si		
 		mv /home/$USER/Paru 	/home/$USER/.Paru
+		break
 	else    echo 'Paru already installed.'
+		break
 fi
 
 while :
