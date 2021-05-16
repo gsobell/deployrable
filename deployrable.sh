@@ -30,23 +30,28 @@ if ! command -v paru &> /dev/null
 	else    echo 'Paru already installed.'
 		fi
 
-	read -p "Install packages at this time? (Y/n)" yn
-	case $yn in
-        Y|y) ls /home/$USER/dotfiles/packlist > packversion.txt
+
+		read -p "Install packages at this time? (Y/n)" yn
+case $yn in
+	Y|y) 
+		
+		ls /home/$USER/dotfiles/packlist > packversion.txt
 		select PACKLIST in $(cat packversion.txt) exit; do 
-   			case $PACKLIST in
-      				exit) echo "exiting" ; 
-       	 			break ;;
-       				*) echo "$PACKLIST" ;
-				echo Installing "$PACKLIST";
-				paru -S - < /home/"$USER"/dotfiles/packlist/"$PACKLIST";
-				rm /home/$USER/packversion.txt;
-			esac
+   		
+		case $PACKLIST in
+		exit) echo "exiting" ; 
+       	 	break ;;
+       				
+		*) echo "$PACKLIST" ;
+		echo Installing "$PACKLIST";
+		paru -S - < /home/"$USER"/dotfiles/packlist/"$PACKLIST";
+		rm /home/$USER/packversion.txt;
+		
+		esac
 		done; break;;
-        N|n) break;;
-		* ) echo "Please answer (y/n)."
-		break; exit;;
-	esac
+        
+	N|n) break;;
+esac
 
 clear
 echo 'Cleaning up.'
