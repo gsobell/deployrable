@@ -2,14 +2,14 @@
 Bash script for deploying dotfiles and selected packages primarily on live enviroments and fresh installs.
 
 ## Usage
+You will be prompted for root if you choose to install PACKLIST.
 ```shell
 curl https://raw.githubusercontent.com/gsobell/deployrable/home/deployrable.sh > deployrable.sh
 chmod -x ./deployrable.sh ; ./deployrable.sh
 ```
 
 
-It is not reccomended to ```curl | sh```, as it currently has some issues.
-You will be prompted for root if you choose to install PACKLIST.
+It is not reccomended to ```curl | sh``` at this time, as it currently has some issues.
 
 ```shell
 curl https://raw.githubusercontent.com/gsobell/deployrable/home/deployrable.sh | sh
@@ -23,6 +23,7 @@ curl https://raw.githubusercontent.com/gsobell/deployrable/home/deployrable.sh |
 - Install most recent list of packages (PACKLIST)
 
 ### Future
+- Fix curl pipe to sh
 - Further interactivity
 - Optional user supplied dotfile repo
 - Use feh to set wallpaper
