@@ -7,7 +7,7 @@ Run the following in the terminal emulator of your choice. You will be prompted 
 curl https://raw.githubusercontent.com/gsobell/deployrable/home/deployrable.sh > deployrable.sh ;
 chmod +x ./deployrable.sh ; ./deployrable.sh
 ```
-It is not reccomended to `curl | sh` at this time, as it currently loops when not run locally.
+It is not recomended to `curl | sh` at this time, as the `stdin` will come from the pipe, and not the console.
 ```bash
 curl https://raw.githubusercontent.com/gsobell/deployrable/home/deployrable.sh | sh
 ```
