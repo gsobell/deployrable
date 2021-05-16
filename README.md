@@ -12,13 +12,13 @@ sh deployrable.sh
 ### Current
 - Clones dotfiles from repo
 - Moves dotfiles to appropriate directories
+- Full package database syncronization
 - Install AUR helper [PARU](https://github.com/morganamilo/paru)
 - Install most recent list of packages (PACKLIST)
 
 ### Future
 - Further interactivity
 - Optional user supplied dotfile repo
-- Use feh to set wallpaper
 - Compatibility across non-pacman distros
 - Make seperate PACKLIST option for Wayland
 - Diff functionality for PACKLIST
