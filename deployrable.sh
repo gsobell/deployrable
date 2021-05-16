@@ -21,11 +21,10 @@ mv -fv /home/$USER/dotfiles/.i3/config		/home/$USER/.i3/config
 
 # Setting natural scrolling > Use xmodmap instead, look into libinput
 
-# read -p "Install packages at this time? (Y/n)" yn
-
-
 if ! command -v paru &> /dev/null
 	then
+		echo 'Refreshing databases'
+		sudo pacman -Syy
 		echo 'Installing Paru'
 		sudo pacman -S --needed base-devel
 		git clone https://aur.archlinux.org/paru.git
@@ -33,7 +32,8 @@ if ! command -v paru &> /dev/null
 		makepkg -si		
 		mv /home/$USER/Paru 	/home/$USER/.Paru
 	else    
-		echo 'Paru already installed.'
+		echo 'Paru already installed, refreshing databases'
+		sudo pacman -Syy
 fi
 
 echo "Install packages at this time? (Y/n)"
@@ -57,8 +57,16 @@ while true; do
 	esac
 done
 
-curl https://unsplash.com/photos/Dksk8szLRN0/ > .default_wallpaper.png
-nitrogen /home/$USER/.default_wallpaper.png
+if ! command -v nitrogen &> /dev/null
+	then
+		curl https://unsplash.com/photos/Dksk8szLRN0/ > .default_wallpaper.png
+		nitrogen /home/$USER/.default_wallpaper.png
+		echo 'Wallpaper set.'
+
+	else
+		echo 'Not setting wallaper'
+
+fi
 
 echo 'Cleaning up.'
 sleep 1
