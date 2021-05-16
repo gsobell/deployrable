@@ -21,7 +21,8 @@ mv -fv /home/$USER/dotfiles/.i3/config		/home/$USER/.i3/config
 
 # Setting natural scrolling > Use xmodmap instead, look into libinput
 
-read -p "Install packages at this time? (Y/n)" yn
+# read -p "Install packages at this time? (Y/n)" yn
+
 
 if ! command -v paru &> /dev/null
 	then
@@ -35,6 +36,8 @@ if ! command -v paru &> /dev/null
 		echo 'Paru already installed.'
 fi
 
+echo "Install packages at this time? (Y/n)"
+read yn
 	
 while true; do
 	case $yn in
@@ -50,7 +53,7 @@ while true; do
 	esac
 	done; break;;
 	[Nn]* ) break;;
-	* ) echo "Please answer yes or no."; read -p "Install packages now (Y/n)?" yn;;
+	* ) echo "Please answer yes or no."; echo "Install packages now (Y/n)?"; read yn;;
 	esac
 done
 
