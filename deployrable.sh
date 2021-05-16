@@ -33,7 +33,7 @@ if ! command -v paru &> /dev/null
 		mv /home/$USER/Paru 	/home/$USER/.Paru
 	else    
 		echo 'Paru already installed.'
-	fi
+fi
 
 	
 while true; do
@@ -50,11 +50,10 @@ while true; do
 	esac
 	done; break;;
 	[Nn]* ) break;;
-	* ) echo "Please answer yes or no.";sleep 1;;
+	* ) echo "Please answer yes or no."; read -p "Install packages now (Y/n)?" yn;;
 	esac
 done
 
-clear
 echo 'Cleaning up.'
 sleep 1
 rm -fdr /home/$USER/dotfiles
