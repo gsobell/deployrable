@@ -33,7 +33,7 @@ if ! command -v paru &> /dev/null
 
 		read -p "Install packages at this time? (Y/n)" yn
 case $yn in
-	Y|y) 
+	[Yy]* ) 
 		
 		ls /home/$USER/dotfiles/packlist > packversion.txt
 		select PACKLIST in $(cat packversion.txt) exit; do 
@@ -50,7 +50,7 @@ case $yn in
 		esac
 		done; break;;
         
-	N|n) break;;
+	[Nn]*) break ;
 esac
 
 clear
