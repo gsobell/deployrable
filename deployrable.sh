@@ -20,15 +20,16 @@ mv -fv /home/$USER/dotfiles/.i3/config		/home/$USER/.i3/config
 # Setting natural scrolling > Use xmodmap instead, look into libinput
 
 if ! command -v paru &> /dev/null
-then
-	echo 'Installing Paru'
-	sudo pacman -S --needed base-devel
-	git clone https://aur.archlinux.org/paru.git
-	cd paru
-	makepkg -si		
+	then
+		echo 'Installing Paru'
+		sudo pacman -S --needed base-devel
+		git clone https://aur.archlinux.org/paru.git
+		cd paru
+		makepkg -si		
 fi
 
-while true; do
+while true
+do
 	read -p "Install packages at this time? (Y/n)" yn
 	case $yn in
         [Yy]* ) ls /home/$USER/dotfiles/packlist > packversion.txt
