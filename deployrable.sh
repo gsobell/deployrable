@@ -40,7 +40,7 @@ if ! command -v paru &> /dev/null
 	[Yy]* ) ls /home/$USER/dotfiles/packlist > packversion.txt
 	select PACKLIST in $(cat packversion.txt) exit; do
 	case $PACKLIST in
-	Exit) echo "Exiting."
+	exit) echo "Exiting."
 	break ;;
 	*) echo "$PACKLIST"
 	echo Installing "$PACKLIST";
