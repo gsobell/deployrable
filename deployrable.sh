@@ -57,6 +57,9 @@ while true; do
 	esac
 done
 
+curl https://unsplash.com/photos/Dksk8szLRN0/ > .default_wallpaper.png
+nitrogen /home/$USER/.default_wallpaper.png
+
 echo 'Cleaning up.'
 sleep 1
 rm -fdr /home/$USER/dotfiles
