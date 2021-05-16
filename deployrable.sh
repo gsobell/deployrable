@@ -27,12 +27,9 @@ if ! command -v paru &> /dev/null
 		cd paru
 		makepkg -si		
 		mv /home/$USER/Paru 	/home/$USER/.Paru
-		break
 	else    echo 'Paru already installed.'
-		break
-fi
+		fi
 
-# while true do
 	read -p "Install packages at this time? (Y/n)" yn
 	case $yn in
         [Yy]*) ls /home/$USER/dotfiles/packlist > packversion.txt
@@ -47,10 +44,9 @@ fi
 			esac
 		done; break;;
         [Nn]*) break;;
-#		* ) echo "Please answer (y/n)."
-#		break; exit;;
-    esac
-# done
+		* ) echo "Please answer (y/n)."
+		break; exit;;
+	esac
 
 clear
 echo 'Cleaning up.'
