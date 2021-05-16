@@ -2,7 +2,13 @@
 Bash script for deploying dotfiles and selected packages primarily on live enviroments and fresh installs.
 
 ## Usage
-Run the following in the home directory.
+```shell
+curl https://raw.githubusercontent.com/gsobell/deployrable/home/deployrable.sh > deployrable.sh
+chmod -x ./deployrable.sh ; ./deployrable.sh
+```
+
+
+It is not reccomended to ```curl | sh```, as it currently has some issues.
 You will be prompted for root if you choose to install PACKLIST.
 
 ```shell
