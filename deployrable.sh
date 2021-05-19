@@ -36,9 +36,9 @@ then
     sudo pacman -S --needed base-devel
     git clone https://aur.archlinux.org/paru.git
     cd paru
-    makepkg -si		
+    makepkg -si
     cd $TEMP
-else    
+else
     echo 'Paru already installed, refreshing databases'
     sudo pacman -Syy
 fi
