@@ -13,13 +13,13 @@ echo 'Cloning dotfile repo to local host'
 git clone https://github.com/gsobell/dotfiles.git
 
 # Initial dotfile deployment
-mkdir -pv /home/$USER/.i3
+mkdir -pv $HOME/.i3
 
-mv -fv dotfiles/.Xresources		/home/$USER/.Xresources
-mv -fv dotfiles/.bashrc		/home/$USER/.bashrc
-mv -fv dotfiles/.bash_profile	/home/$USER/.bash_profile
-mv -fv dotfiles/.vimrc		/home/$USER/.vimrc
-mv -fv dotfiles/.i3/config		/home/$USER/.i3/config
+mv -fv dotfiles/.Xresources	    $HOME/.Xresources
+mv -fv dotfiles/.bashrc		    $HOME/.bashrc
+mv -fv dotfiles/.bash_profile	$HOME/.bash_profile
+mv -fv dotfiles/.vimrc		    $HOME/.vimrc
+mv -fv dotfiles/.i3/config		$HOME/.i3/config
 
 # Setting natural scrolling > Use xmodmap instead, look into libinput
 
@@ -32,7 +32,7 @@ if ! command -v paru &> /dev/null
 		git clone https://aur.archlinux.org/paru.git
 		cd paru
 		makepkg -si		
-		mv /home/$USER/Paru 	/home/$USER/.Paru
+		mv $HOME/Paru 	$HOME/.Paru
 	else    
 		echo 'Paru already installed, refreshing databases'
 		sudo pacman -Syy
@@ -65,7 +65,7 @@ if ! command -v nitrogen &> /dev/null
 
 	else
 		curl https://unsplash.com/photos/Dksk8szLRN0/ > .default_wallpaper.png
-		nitrogen /home/$USER/.default_wallpaper.png
+		nitrogen $HOME/.default_wallpaper.png
 		echo 'Wallpaper set.'
 
 fi
