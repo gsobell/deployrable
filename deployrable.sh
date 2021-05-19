@@ -5,7 +5,9 @@ sleep 1
 echo 'MIT License, Copyright (c) 2021 gsobell'
 clear
 
-cd /home/$USER/
+TEMP=$(mktemp -d -t gsobell.XXXXXXXXXX)
+
+cd $TEMP
 
 echo 'Cloning dotfile repo to local host'
 git clone https://github.com/gsobell/dotfiles.git
@@ -13,11 +15,11 @@ git clone https://github.com/gsobell/dotfiles.git
 # Initial dotfile deployment
 mkdir -pv /home/$USER/.i3
 
-mv -fv /home/$USER/dotfiles/.Xresources		/home/$USER/.Xresources
-mv -fv /home/$USER/dotfiles/.bashrc		/home/$USER/.bashrc
-mv -fv /home/$USER/dotfiles/.bash_profile	/home/$USER/.bash_profile
-mv -fv /home/$USER/dotfiles/.vimrc		/home/$USER/.vimrc
-mv -fv /home/$USER/dotfiles/.i3/config		/home/$USER/.i3/config
+mv -fv dotfiles/.Xresources		/home/$USER/.Xresources
+mv -fv dotfiles/.bashrc		/home/$USER/.bashrc
+mv -fv dotfiles/.bash_profile	/home/$USER/.bash_profile
+mv -fv dotfiles/.vimrc		/home/$USER/.vimrc
+mv -fv dotfiles/.i3/config		/home/$USER/.i3/config
 
 # Setting natural scrolling > Use xmodmap instead, look into libinput
 
@@ -41,15 +43,15 @@ read yn
 	
 while true; do
 	case $yn in
-	[Yy]* ) ls /home/$USER/dotfiles/packlist > packversion.txt
+	[Yy]* ) ls dotfiles/packlist > packversion.txt
 	select PACKLIST in $(cat packversion.txt) exit; do
 	case $PACKLIST in
 	exit) echo "Exiting."
 	break ;;
 	*) echo "$PACKLIST"
 	echo Installing "$PACKLIST";
-	paru -S - < /home/"$USER"/dotfiles/packlist/"$PACKLIST"
-	rm /home/$USER/packversion.txt
+	paru -S - < dotfiles/packlist/"$PACKLIST"
+	rm packversion.txt
 	esac
 	done; break;;
 	[Nn]* ) break;;
@@ -70,7 +72,7 @@ fi
 
 echo 'Cleaning up.'
 sleep 1
-rm -fdr /home/$USER/dotfiles
+rm -fdr $TEMP
 echo 'One moment please.'
 sleep 1
 echo "Setup complete, exiting deployrable."
