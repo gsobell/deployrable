@@ -32,7 +32,7 @@ if ! command -v paru &> /dev/null
 		git clone https://aur.archlinux.org/paru.git
 		cd paru
 		makepkg -si		
-		mv $HOME/Paru 	$HOME/.Paru
+		cd $TEMP
 	else    
 		echo 'Paru already installed, refreshing databases'
 		sudo pacman -Syy
