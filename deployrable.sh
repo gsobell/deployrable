@@ -6,7 +6,6 @@ echo 'MIT License, Copyright (c) 2021 gsobell'
 clear
 
 TEMP=$(mktemp -d -t gsobell.XXXXXXXXXX)
-
 cd $TEMP
 
 echo 'Checking if git is installed'
@@ -45,7 +44,6 @@ fi
 
 echo "Install packages at this time? (Y/n)"
 read yn
-
 while true; do
     case $yn in
         [Yy]* ) ls dotfiles/packlist > packversion.txt
@@ -67,12 +65,10 @@ done
 if ! command -v nitrogen &> /dev/null
 then
     echo 'Not setting wallaper'
-
 else
     curl https://unsplash.com/photos/Dksk8szLRN0/ > .default_wallpaper.png
     nitrogen $HOME/.default_wallpaper.png
     echo 'Wallpaper set.'
-
 fi
 
 echo 'Cleaning up.'
