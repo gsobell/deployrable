@@ -8,7 +8,7 @@ clear
 cd /home/$USER/
 
 echo 'Checking if git is installed'
-if ! pacman -Qi git &> /dev/null ; then
+if ! command -v git &> /dev/null; then
     sudo pacman -S git
 fi
 
