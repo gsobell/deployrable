@@ -69,7 +69,7 @@ if ! command -v nitrogen &> /dev/null
 		echo 'Not setting wallaper'
 
 	else
-		curl https://unsplash.com/photos/Dksk8szLRN0/ > .default_wallpaper.png
+		curl https://unsplash.com/photos/Dksk8szLRN0/ > $HOME/.default_wallpaper.png
 		nitrogen $HOME/.default_wallpaper.png
 		echo 'Wallpaper set.'
 
