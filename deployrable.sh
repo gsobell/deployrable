@@ -63,7 +63,6 @@ while true; do
 done
 
 if ! command -v nitrogen &> /dev/null
-
 then
     echo 'Not setting wallaper'
 else
