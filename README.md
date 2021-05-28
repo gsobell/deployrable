@@ -12,7 +12,7 @@ sh deployrable.sh
 ### Current
 - Clones dotfiles from repo
 - Moves dotfiles to appropriate directories
-- Full package database syncronization
+- Full package database synchronization
 - Install AUR helper [PARU](https://github.com/morganamilo/paru)
 - Install most recent list of packages ([PACKLIST](https://github.com/gsobell/dotfiles/tree/main/packlist))
 
