@@ -19,12 +19,12 @@ git clone https://github.com/gsobell/dotfiles.git
 # Initial dotfile deployment
 mkdir -pv $HOME/.i3
 
-mv -fv $TEMP/dotfiles/.Xresources	$HOME/.Xresources
-mv -fv $TEMP/dotfiles/.bashrc		$HOME/.bashrc
-mv -fv $TEMP/dotfiles/.bash_profile	$HOME/.bash_profile
-mv -fv $TEMP/dotfiles/.vimrc		$HOME/.vimrc
-mv -fv $TEMP/dotfiles/.i3/config	$HOME/.i3/config
-mv     $TEMP/dotfiles/.config/*		$HOME/.config
+mv -fv dotfiles/.Xresources	$HOME/.Xresources
+mv -fv dotfiles/.bashrc		$HOME/.bashrc
+mv -fv dotfiles/.bash_profile	$HOME/.bash_profile
+mv -fv dotfiles/.vimrc		$HOME/.vimrc
+mv -fv dotfiles/.i3/config	$HOME/.i3/config
+mv     dotfiles/.config/*	$HOME/.config
 
 # Setting natural scrolling > Use xmodmap instead, look into libinput
 
