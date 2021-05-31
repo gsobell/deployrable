@@ -14,13 +14,10 @@ sh deployrable.sh
 - Moves dotfiles to appropriate directories
 - Full package database synchronization
 - Install AUR helper [PARU](https://github.com/morganamilo/paru)
-- Install most recent list of packages ([PACKLIST](https://github.com/gsobell/dotfiles/tree/main/packlist))
+- Install and compare most recent list of packages ([PACKLIST](https://github.com/gsobell/dotfiles/tree/main/packlist))
 
 ### Future
-- Further interactivity
-- Optional user supplied dotfile repo
 - Compatibility across non-pacman distros
 - Make seperate PACKLIST option for Wayland
-- Diff functionality for PACKLIST
 ##
 This software is provided "as is", without warranty of any kind. *Caveat emptor*.
