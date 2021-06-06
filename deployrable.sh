@@ -56,8 +56,8 @@ while true; do
 			    echo "Choose a second package"   	
 			select PACK2 in $(cat packversion.txt); do echo "Second package is $PACK2"; break; done; 
 				if ! command -v colordiff &> /dev/null;
-				then  diff	$TEMP/dotfiles/packlist/$PACK1 $TEMP/dotfiles/packlist/$PACK2 ; 	
-				else  colordiff $TEMP/dotfiles/packlist/$PACK1 $TEMP/dotfiles/packlist/$PACK2 ; 
+				then  diff	$TEMP/dotfiles/.packlist/$PACK1 $TEMP/dotfiles/.packlist/$PACK2 ; 	
+				else  colordiff $TEMP/dotfiles/.packlist/$PACK1 $TEMP/dotfiles/.packlist/$PACK2 ; 
 				fi
 			read -p "Press enter to continue"
 			echo "Install one of these packages?"
