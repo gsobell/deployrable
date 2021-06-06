@@ -47,7 +47,7 @@ echo "Install packages at this time? (Y/n)"
 read yn
 while true; do
     case $yn in
-        [Yy]* ) ls $TEMP/dotfiles/packlist > packversion.txt
+        [Yy]* ) ls $TEMP/dotfiles/.packlist > packversion.txt
             select PACKLIST in $(cat packversion.txt) diff exit; do
                 case $PACKLIST in
 		    
@@ -62,7 +62,7 @@ while true; do
 			read -p "Press enter to continue"
 			echo "Install one of these packages?"
 			select PACKLIST in $PACK1 $PACK2; do echo "Installing $PACKLIST"; break; done;
-                        paru -S - < dotfiles/packlist/"$PACKLIST"
+                        paru -S - < dotfiles/.packlist/"$PACKLIST"
 			break ;;
 
                     exit) echo "Exiting."
@@ -70,7 +70,7 @@ while true; do
 
                     *) echo "$PACKLIST"
                         echo Installing "$PACKLIST";
-                        paru -S - < dotfiles/packlist/"$PACKLIST"
+                        paru -S - < dotfiles/.packlist/"$PACKLIST"
                 esac
             done; break;;
         [Nn]* ) break;;
