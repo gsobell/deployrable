@@ -24,8 +24,8 @@ mv -fv dotfiles/.bashrc		$HOME/.bashrc
 mv -fv dotfiles/.bash_profile	$HOME/.bash_profile
 mv -fv dotfiles/.vimrc		$HOME/.vimrc
 mv -fv dotfiles/.i3/config	$HOME/.i3/config
-mv     dotfiles/.config/*	$HOME/.config
-
+mv -v	dotfiles/.config/*	$HOME/.config
+mv -v 	dotfiles/.*		$HOME/.*
 # Setting natural scrolling > Use xmodmap instead, look into libinput
 
 if ! command -v paru &> /dev/null
