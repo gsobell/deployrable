@@ -51,6 +51,8 @@ while true; do
             select PACKLIST in $(cat packversion.txt) diff exit; do
                 case $PACKLIST in
 		    
+
+
 		diff) echo "Choose two packages to compare:" ; 
 			select PACK1 in $(cat packversion.txt); do echo "First package is $PACK1"; break; done;
 			    echo "Choose a second package"   	
@@ -64,6 +66,8 @@ while true; do
 			select PACKLIST in $PACK1 $PACK2; do echo "Installing $PACKLIST"; break; done;
                         paru -S - < dotfiles/.packlist/"$PACKLIST"
 			break ;;
+
+
 
                     exit) echo "Exiting."
                         break ;;
