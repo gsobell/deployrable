@@ -57,7 +57,7 @@ while true; do
     case $yn in
         [Yy]* ) ls $TEMP/dotfiles/.packlist > packversion.txt
             select PACKLIST in $(cat packversion.txt) diff exit; do
-                case $PACKLIST in
+                case "$PACKLIST" in
 		    
 
 
