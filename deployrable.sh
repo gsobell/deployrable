@@ -29,7 +29,12 @@ mv -v 	dotfiles/.*		$HOME/.*
 # Setting natural scrolling > Use xmodmap instead, look into libinput
 
 if ! command -v pacman &> /dev/null
-then
+then echo 'Cleaning up.'
+	sleep 1
+	echo "Setup complete, exiting deployrable."
+	sleep 1
+	exit 0
+else
 
 if ! command -v paru &> /dev/null
 then
