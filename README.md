@@ -15,9 +15,7 @@ sh deployrable.sh
 - Full package database synchronization
 - Install AUR helper [PARU](https://github.com/morganamilo/paru)
 - Install and compare most recent list of packages ([PACKLIST](https://github.com/gsobell/dotfiles/tree/main/packlist))
+- Smart distro detection for package manager
 
-### Future
-- Compatibility across non-pacman distros
-- Make seperate PACKLIST option for Wayland
 ##
 This software is provided "as is", without warranty of any kind. *Caveat emptor*.
