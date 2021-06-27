@@ -28,6 +28,9 @@ mv -v	dotfiles/.config/*	$HOME/.config
 mv -v 	dotfiles/.*		$HOME/.*
 # Setting natural scrolling > Use xmodmap instead, look into libinput
 
+if ! command -v pacman &> /dev/null
+then
+
 if ! command -v paru &> /dev/null
 then
     echo 'Refreshing databases'
@@ -82,6 +85,7 @@ while true; do
     esac
 done
 
+fi
 #if ! command -v nitrogen &> /dev/null && ! command -v feh &> /dev/null ; then echo "No background backend"; 
 #else 		
 #	select BACKGROUND in Default URL; do 
