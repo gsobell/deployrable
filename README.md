@@ -14,7 +14,7 @@ sh deployrable.sh
 - Moves dotfiles to appropriate directories
 - Full package database synchronization
 - Install AUR helper [PARU](https://github.com/morganamilo/paru)
-- Install and compare most recent list of packages ([PACKLIST](https://github.com/gsobell/dotfiles/tree/main/packlist))
+- Install and compare most recent list of packages ([PACKLIST](https://github.com/gsobell/dotfiles/tree/master/.packlist))
 - Smart distro detection for package manager
 
 ##
