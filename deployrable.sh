@@ -48,7 +48,7 @@ then echo 'Non-arch based distro, not installing packages.'
 		sleep 1
 		#sudo apt update
 		#sudo apt upgrade
-		PKGMANAGER="sudo apt install"
+		PKGMANAGER="xargs sudo apt install"
 		fi
 
 else
@@ -89,13 +89,13 @@ case $yn in
 			read -p "Press enter to continue"
 			echo "Install one of these packages?"
 			select PACKLIST in $PACK1 $PACK2; do echo "Installing $PACKLIST"; break; done;
-			$PKGMANAGER $(cat $PACKLIST)
+			$PKGMANAGER < dotfiles/.packlist/"$PACKLIST"
 			break ;;
 		exit) echo "Exiting."
 			break ;;
 		*) echo "$PACKLIST"
 			echo Installing "$PACKLIST";
-			$PKGMANAGER $(cat $PACKLIST)
+			$PKGMANAGER < dotfiles/.packlist/"$PACKLIST"
 		esac
 		done; break;;
 	[Nn]* ) break;;
