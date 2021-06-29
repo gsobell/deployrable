@@ -5,6 +5,22 @@ sleep 1
 echo 'MIT License, Copyright (c) 2021 gsobell'
 clear
 
+if [ ! -n "$BASH" ] 
+then 
+echo "Please run this script with bash";
+read -p "Press enter to continue" 
+read ""
+echo"Would you like to attempt to run it anyway? (y/n)"
+read yn
+	while true; do
+	case $yn in
+		[Yy]* ) break
+		[Nn]* ) exit;;
+	esac
+	done
+else :
+fi
+
 TEMP=$(mktemp -d -t gsobell.XXXXXXXXXX)
 cd $TEMP
 
