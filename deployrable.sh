@@ -14,7 +14,7 @@ echo"Would you like to attempt to run it anyway? (y/n)"
 read yn
 	while true; do
 	case $yn in
-		[Yy]* ) break
+		[Yy]* ) break ;;
 		[Nn]* ) exit;;
 	esac
 	done
