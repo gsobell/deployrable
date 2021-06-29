@@ -74,14 +74,13 @@ sleep 1
 echo "Install packages at this time? (Y/n)"
 read yn
 while true; do
-    case $yn in
-        [Yy]* ) ls $TEMP/dotfiles/.packlist > packversion.txt
-            select PACKLIST in $(cat packversion.txt) diff exit; do
-                case "$PACKLIST" in
-		    
+case $yn in
+	[Yy]* ) ls $TEMP/dotfiles/.packlist > packversion.txt
+		select PACKLIST in $(cat packversion.txt) diff exit; do
+		case "$PACKLIST" in
 		diff) echo "Choose two packages to compare:" ; 
 			select PACK1 in $(cat packversion.txt); do echo "First package is $PACK1"; break; done;
-			    echo "Choose a second package"   	
+			echo "Choose a second package"   	
 			select PACK2 in $(cat packversion.txt); do echo "Second package is $PACK2"; break; done; 
 				if ! command -v colordiff &> /dev/null;
 				then  diff	$TEMP/dotfiles/.packlist/$PACK1 $TEMP/dotfiles/.packlist/$PACK2 ; 	
@@ -90,20 +89,18 @@ while true; do
 			read -p "Press enter to continue"
 			echo "Install one of these packages?"
 			select PACKLIST in $PACK1 $PACK2; do echo "Installing $PACKLIST"; break; done;
-                        $PKGMANAGER < dotfiles/.packlist/"$PACKLIST"
+			$PKGMANAGER $(cat $PACKLIST)
 			break ;;
-
-                    exit) echo "Exiting."
-                        break ;;
-
-                    *) echo "$PACKLIST"
-                        echo Installing "$PACKLIST";
-                        $PKGMANAGER < dotfiles/.packlist/"$PACKLIST"
-                esac
-            done; break;;
-        [Nn]* ) break;;
-        * ) echo "Please answer yes or no."; echo "Install packages now (Y/n)?"; read yn;;
-    esac
+		exit) echo "Exiting."
+			break ;;
+		*) echo "$PACKLIST"
+			echo Installing "$PACKLIST";
+			$PKGMANAGER $(cat $PACKLIST)
+		esac
+		done; break;;
+	[Nn]* ) break;;
+		* ) echo "Please answer yes or no."; echo "Install packages now (Y/n)?"; read yn;;
+esac
 done
 
 
