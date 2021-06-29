@@ -5,17 +5,17 @@ sleep 1
 echo 'MIT License, Copyright (c) 2021 gsobell'
 clear
 
+# Verifying that shell is indeed bash
 if [ ! -n "$BASH" ] 
 then 
-echo "Please run this script with bash";
-read -p "Press enter to continue" 
-read ""
-echo"Would you like to attempt to run it anyway? (y/n)"
-read yn
+	echo "Please run this script with bash.";
+	echo"Would you like to attempt to run it anyway? (y/n)"
+	read yn
 	while true; do
 	case $yn in
-		[Yy]* ) break ;;
-		[Nn]* ) exit;;
+		[Yy]) break ;;
+		[Nn]) echo "Setup failed, exiting deployrable"; 
+			exit;;
 	esac
 	done
 else :
@@ -47,8 +47,7 @@ mkdir -pv ~/Notes
 mkdir -pv ~/"To Read"/Read
 
 if ! command -v pacman &> /dev/null
-then echo 'Non-arch based distro, not installing packages.'
-		# Unknown distro clause
+then 		# Unknown distro clause
 		if ! command -v apt &> /dev/null
 		then 
 		echo 'Non-debian based distro, not installing packages.'
@@ -60,10 +59,10 @@ then echo 'Non-arch based distro, not installing packages.'
 		exit 0
 		# Debian clause
 		else
-		echo 'Assuming Debian based distro, attempting to install packages.'
+		echo 'Debian based distro, attempting to install packages.'
 		sleep 1
-		#sudo apt update
-		#sudo apt upgrade
+		sudo apt update &&
+		sudo apt upgrade &&
 		PKGMANAGER="xargs sudo apt install"
 		fi
 
@@ -78,7 +77,22 @@ else
 		git clone https://aur.archlinux.org/paru.git
 		cd paru
 		makepkg -si
-		cd $TEMP
+		cd $TEMP 
+			if ! command -v paru &> /dev/null
+			then 	echo "Paru installation failed, fallback to yay"
+				chars="/—\|"; for n in {1..20}; do echo -en "${chars:$(( i=(i+1) % ${#chars} )):1}" "\r"; sleep 0.15; done
+				pacman -S --needed git base-devel
+				git clone https://aur.archlinux.org/yay.git
+				cd yay
+				makepkg -si
+				PKGMANAGER="yay -S -"
+				
+				if ! command -v yay &> /dev/null
+				then echo "Yay installation failed, fallback to pacman"
+				echo "To install packages from the AUR, try again."
+				PKGMANAGER="pacman -S -"
+				fi
+			fi
 		else
 		echo 'Paru already installed, refreshing databases'
 		sudo pacman -Syy
