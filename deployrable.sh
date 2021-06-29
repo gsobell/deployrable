@@ -49,7 +49,6 @@ then
 	sudo apt update
 	sudo apt upgrade
 	PKGMANAGER="sudo apt install"
-	exit 0
 	fi
 
 else
