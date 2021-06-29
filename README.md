@@ -2,7 +2,7 @@
 Bash script for deploying dotfiles and selected packages primarily on live enviroments and fresh installs.
 
 ## Usage
-Run the following in the terminal emulator of your choice. You will be prompted for root if you choose to install [PACKLIST](https://github.com/gsobell/dotfiles/tree/master/.packlist). If there are existing dotfiles, they will be overwritten. Script will not 
+Run the following in the terminal emulator of your choice. You will be prompted for root if you choose to install [PACKLIST](https://github.com/gsobell/dotfiles/tree/master/.packlist). If there are existing dotfiles, they will be overwritten.
 ```bash
 curl -O https://raw.githubusercontent.com/gsobell/deployrable/home/deployrable.sh
 sh deployrable.sh
