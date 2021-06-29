@@ -46,8 +46,8 @@ then
 	else
 	echo 'Assuming Debian based distro, attempting to install packages.'
 	sleep 1
-	apt update
-	apt upgrade
+	sudo apt update
+	sudo apt upgrade
 	PKGMANAGER="sudo apt install"
 	exit 0
 	fi
