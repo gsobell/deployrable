@@ -31,45 +31,45 @@ mkdir -pv ~/Notes
 mkdir -pv ~/"To Read"/Read
 
 if ! command -v pacman &> /dev/null
-then 
-	echo 'Non-arch based distro, not installing packages.'
-	sleep 1
-	if ! command -v apt &> /dev/null
-	then 
-	echo 'Non-debian based distro, not installing packages.'
-	sleep 1
+then echo 'Non-arch based distro, not installing packages.'
+		# Unknown distro clause
+		if ! command -v apt &> /dev/null
+		then 
+		echo 'Non-debian based distro, not installing packages.'
+		sleep 1
 		echo 'Cleaning up.'
 		sleep 1
 		echo "Setup complete, exiting deployrable."
 		sleep 1	
 		exit 0
-	else
-	echo 'Assuming Debian based distro, attempting to install packages.'
-	sleep 1
-	#sudo apt update
-	#sudo apt upgrade
-	PKGMANAGER="sudo apt install"
-	fi
+		# Debian clause
+		else
+		echo 'Assuming Debian based distro, attempting to install packages.'
+		sleep 1
+		#sudo apt update
+		#sudo apt upgrade
+		PKGMANAGER="sudo apt install"
+		fi
 
 else
-
-if ! command -v paru &> /dev/null
-then
-    echo 'Refreshing databases'
-    sudo pacman -Syy
-    echo 'Installing Paru'
-    sudo pacman -S --needed base-devel
-    git clone https://aur.archlinux.org/paru.git
-    cd paru
-    makepkg -si
-    cd $TEMP
-else
-    echo 'Paru already installed, refreshing databases'
-    sudo pacman -Syy
-    PKGMANAGER="paru -S -"
+		# Arch clause
+		if ! command -v paru &> /dev/null
+		then
+		echo 'Refreshing databases'
+		sudo pacman -Syy
+		echo 'Installing Paru'
+		sudo pacman -S --needed base-devel
+		git clone https://aur.archlinux.org/paru.git
+		cd paru
+		makepkg -si
+		cd $TEMP
+		else
+		echo 'Paru already installed, refreshing databases'
+		sudo pacman -Syy
+		PKGMANAGER="paru -S -"
+		fi
 fi
-fi
-
+sleep 1
 
 echo "Install packages at this time? (Y/n)"
 read yn
