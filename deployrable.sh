@@ -30,23 +30,22 @@ mv -v 	dotfiles/.*		$HOME/.*
 mkdir -pv ~/Notes
 mkdir -pv ~/"To Read"/Read
 
-function exitmsg() {
-echo 'Cleaning up.'
-sleep 1
-echo "Setup complete, exiting deployrable."
-sleep 1
-exit 0
-}
-
 if ! command -v pacman &> /dev/null
 then 
 	echo 'Non-arch based distro, not installing packages.'
+	sleep 1
 	if ! command -v apt &> /dev/null
 	then 
 	echo 'Non-debian based distro, not installing packages.'
-	exitmsg()
+	sleep 1
+		echo 'Cleaning up.'
+		sleep 1
+		echo "Setup complete, exiting deployrable."
+		sleep 1	
+		exit 0
 	else
 	echo 'Assuming Debian based distro, attempting to install packages.'
+	sleep 1
 	apt update
 	apt full-upgrade
 	PKGMANAGER="sudo apt install"
@@ -123,4 +122,8 @@ fi
 #	feh --bg-fill /usr/share/backgrounds/back.jpeg || nitrogen $HOME
 #fi
 	
-exitmsg()
+echo 'Cleaning up.'
+sleep 1
+echo "Setup complete, exiting deployrable."
+sleep 1
+exit 0
