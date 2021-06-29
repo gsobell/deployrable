@@ -8,10 +8,10 @@ clear
 TEMP=$(mktemp -d -t gsobell.XXXXXXXXXX)
 cd $TEMP
 
-#echo 'Checking if git is installed'
-#if ! command -v git &> /dev/null; then
-#    sudo pacman -S git
-#fi
+echo 'Checking if git is installed'
+if ! command -v git &> /dev/null; then
+    sudo pacman -S git
+fi
 
 echo 'Cloning dotfile repo to local host'
 git clone https://github.com/gsobell/dotfiles.git
@@ -47,7 +47,7 @@ then
 	echo 'Assuming Debian based distro, attempting to install packages.'
 	sleep 1
 	apt update
-	apt full-upgrade
+	apt upgrade
 	PKGMANAGER="sudo apt install"
 	exit 0
 	fi
