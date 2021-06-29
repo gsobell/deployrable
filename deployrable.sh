@@ -73,7 +73,7 @@ PKGMANAGER="paru -S -"
 
 echo "Install packages at this time? (Y/n)"
 read yn
-function pkginstall() {
+
 while true; do
     case $yn in
         [Yy]* ) ls $TEMP/dotfiles/.packlist > packversion.txt
@@ -107,8 +107,6 @@ while true; do
     esac
 done
 fi
-
-}
 
 #if ! command -v nitrogen &> /dev/null && ! command -v feh &> /dev/null ; then echo "No background backend"; 
 #else 		
