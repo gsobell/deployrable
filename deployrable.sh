@@ -26,13 +26,30 @@ mv -fv dotfiles/.vimrc		$HOME/.vimrc
 mv -fv dotfiles/.i3/config	$HOME/.i3/config
 mv -v	dotfiles/.config/*	$HOME/.config
 mv -v 	dotfiles/.*		$HOME/.*
-# Setting natural scrolling > Use xmodmap instead, look into libinput
+
+mkdir -pv ~/Notes
+mkdir -pv ~/"To Read"/Read
+
+function exitmsg() {
+echo 'Cleaning up.'
+sleep 1
+echo "Setup complete, exiting deployrable."
+sleep 1
+exit 0
+}
 
 if ! command -v pacman &> /dev/null
-then echo 'Cleaning up.'
-	sleep 1
-	echo "Setup complete, exiting deployrable."
-	sleep 1
+then 
+	echo 'Non-arch based distro, not installing packages.'
+	if ! command -v apt &> /dev/null
+	echo 'Non-debian based distro, not installing packages.'
+	exitmsg()
+	else
+	echo 'Assuming Debian based distro, attempting to install packages.'
+	apt update
+	apt full-upgrade
+	PKGMANAGER="sudo apt install"
+	
 	exit 0
 else
 
@@ -46,21 +63,22 @@ then
     cd paru
     makepkg -si
     cd $TEMP
-#else
-#    echo 'Paru already installed, refreshing databases'
-#    sudo pacman -Syy
+else
+    echo 'Paru already installed, refreshing databases'
+    sudo pacman -Syy
 fi
+
+PKGMANAGER="paru -S -"
 
 echo "Install packages at this time? (Y/n)"
 read yn
+function pkginstall() {
 while true; do
     case $yn in
         [Yy]* ) ls $TEMP/dotfiles/.packlist > packversion.txt
             select PACKLIST in $(cat packversion.txt) diff exit; do
                 case "$PACKLIST" in
 		    
-
-
 		diff) echo "Choose two packages to compare:" ; 
 			select PACK1 in $(cat packversion.txt); do echo "First package is $PACK1"; break; done;
 			    echo "Choose a second package"   	
@@ -72,25 +90,25 @@ while true; do
 			read -p "Press enter to continue"
 			echo "Install one of these packages?"
 			select PACKLIST in $PACK1 $PACK2; do echo "Installing $PACKLIST"; break; done;
-                        paru -S - < dotfiles/.packlist/"$PACKLIST"
+                        $PKGMANAGER < dotfiles/.packlist/"$PACKLIST"
 			break ;;
-
-
 
                     exit) echo "Exiting."
                         break ;;
 
                     *) echo "$PACKLIST"
                         echo Installing "$PACKLIST";
-                        paru -S - < dotfiles/.packlist/"$PACKLIST"
+                        $PKGMANAGER < dotfiles/.packlist/"$PACKLIST"
                 esac
             done; break;;
         [Nn]* ) break;;
         * ) echo "Please answer yes or no."; echo "Install packages now (Y/n)?"; read yn;;
     esac
 done
-
 fi
+
+}
+
 #if ! command -v nitrogen &> /dev/null && ! command -v feh &> /dev/null ; then echo "No background backend"; 
 #else 		
 #	select BACKGROUND in Default URL; do 
@@ -103,9 +121,4 @@ fi
 #	feh --bg-fill /usr/share/backgrounds/back.jpeg || nitrogen $HOME
 #fi
 	
-
-echo 'Cleaning up.'
-sleep 1
-echo "Setup complete, exiting deployrable."
-sleep 1
-exit 0
+exitmsg()
