@@ -42,6 +42,7 @@ if ! command -v pacman &> /dev/null
 then 
 	echo 'Non-arch based distro, not installing packages.'
 	if ! command -v apt &> /dev/null
+	then 
 	echo 'Non-debian based distro, not installing packages.'
 	exitmsg()
 	else
@@ -49,8 +50,9 @@ then
 	apt update
 	apt full-upgrade
 	PKGMANAGER="sudo apt install"
-	
 	exit 0
+	fi
+
 else
 
 if ! command -v paru &> /dev/null
