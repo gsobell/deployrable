@@ -68,6 +68,7 @@ else
     sudo pacman -Syy
     PKGMANAGER="paru -S -"
 fi
+fi
 
 echo "Install packages at this time? (Y/n)"
 read yn
@@ -104,7 +105,7 @@ while true; do
         * ) echo "Please answer yes or no."; echo "Install packages now (Y/n)?"; read yn;;
     esac
 done
-fi
+
 
 #if ! command -v nitrogen &> /dev/null && ! command -v feh &> /dev/null ; then echo "No background backend"; 
 #else 		
