@@ -9,7 +9,7 @@ clear
 if [ ! -n "$BASH" ] 
 then 
 	echo "Please run this script with bash.";
-	echo"Would you like to attempt to run it anyway? (y/n)"
+	echo "Would you like to attempt to run it anyway? (y/n)"
 	read yn
 	while true; do
 	case $yn in
@@ -26,7 +26,11 @@ cd $TEMP
 
 echo 'Checking if git is installed'
 if ! command -v git &> /dev/null; then
-    sudo pacman -S git
+    sudo pacman -S git ||
+    sudo apt install git ||
+    sudo zypper install git ||
+    echo "Git not installed, setup failed, exiting deployrable"; 
+
 fi
 
 echo 'Cloning dotfile repo to local host'
