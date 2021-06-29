@@ -70,9 +70,9 @@ else
 fi
 fi
 
+
 echo "Install packages at this time? (Y/n)"
 read yn
-
 while true; do
     case $yn in
         [Yy]* ) ls $TEMP/dotfiles/.packlist > packversion.txt
