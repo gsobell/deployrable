@@ -46,8 +46,8 @@ then
 	else
 	echo 'Assuming Debian based distro, attempting to install packages.'
 	sleep 1
-	sudo apt update
-	sudo apt upgrade
+	#sudo apt update
+	#sudo apt upgrade
 	PKGMANAGER="sudo apt install"
 	fi
 
@@ -66,9 +66,8 @@ then
 else
     echo 'Paru already installed, refreshing databases'
     sudo pacman -Syy
+    PKGMANAGER="paru -S -"
 fi
-
-PKGMANAGER="paru -S -"
 
 echo "Install packages at this time? (Y/n)"
 read yn
