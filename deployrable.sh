@@ -139,7 +139,7 @@ case $yn in
 esac
 done
 
-echo "Install Sabaki?"
+echo "Install Sabaki? (y/n)"
 read yn
 	while true; do
 	case $yn in
