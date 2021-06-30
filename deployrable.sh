@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo 'deployrable v1.0'
+echo 'deployrable v1.1'
 sleep 1
 echo 'MIT License, Copyright (c) 2021 gsobell'
 clear
