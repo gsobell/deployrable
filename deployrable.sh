@@ -139,6 +139,18 @@ case $yn in
 esac
 done
 
+echo "Install Sabaki?"
+read yn
+	while true; do
+	case $yn in
+	[Yy]*)  if ! command -v gnugo &> /dev/null 
+		then $PKGMANAGER gnugo; fi 
+		if ! command -v wget &> /dev/null
+		then $PKGMANAGER wget; fi 
+		sudo wget https://github.com/SabakiHQ/Sabaki/releases/download/v0.51.1/sabaki-v0.51.1-linux-x64.AppImage > /usr/local/bin/Sabaki ; break;;
+	[Nn]*) echo "Skipping Sabaki and Go Engines."; break ;;
+	esac
+	done
 
 #if ! command -v nitrogen &> /dev/null && ! command -v feh &> /dev/null ; then echo "No background backend"; 
 #else 		
