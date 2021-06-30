@@ -26,11 +26,13 @@ cd $TEMP
 
 echo 'Checking if git is installed'
 if ! command -v git &> /dev/null; then
-    sudo pacman -S git ||
+    sudo pacman -S git   ||    
     sudo apt install git ||
-    sudo zypper install git ||
+    sudo yum install git ||
+    sudo pkg install git ||
+    sudo zypper install git ||  
+    sudo install git ||
     echo "Git not installed, setup failed, exiting deployrable"; 
-
 fi
 
 echo 'Cloning dotfile repo to local host'
