@@ -109,6 +109,7 @@ sleep 1
 
 echo "Install packages at this time? (Y/n)"
 read yn
+echo "This host is running $XDG_SESSION_TYPE"
 while true; do
 case $yn in
 	[Yy]* ) ls $TEMP/dotfiles/.packlist > packversion.txt
