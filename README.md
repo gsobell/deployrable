@@ -27,7 +27,7 @@ sh deployrable.sh
 4. Fork this repo on either [GitHub](https://github.com/gsobell/deployrable) or [Gitlab](https://gitlab.com/gsobell/deployrable).
 5. Replace line 39 with the remote origin of your own dotfile repo.
 
-To make sure you keep your backups up to date, create a path of least resistance for yourself. Set up aliases to save time!
+Be sure to keep your backups up to date.
 
 ##
 This software is provided "as is", without warranty of any kind. *Caveat emptor*.
