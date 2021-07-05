@@ -26,8 +26,10 @@ sh deployrable.sh
 3. Push your repo to a remote origin. You can host with a service, or easily host it yourself, i.e on an Raspberry Pi.
 4. Fork this repo on either [GitHub](https://github.com/gsobell/deployrable) or [Gitlab](https://gitlab.com/gsobell/deployrable).
 5. Replace line 39 with the remote origin of your own dotfile repo.
+6. Run your fork of`deployrable.sh` in an interactive bash shell.
 
 Be sure to keep your backups up to date.
+Dependencies are `git` and `curl`, both of which are pre-installed on most linux distros.
 
 ##
 This software is provided "as is", without warranty of any kind. *Caveat emptor*.
