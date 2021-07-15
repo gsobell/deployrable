@@ -107,7 +107,7 @@ read yn
 echo "This host is running $XDG_SESSION_TYPE" # Prints display server
 while true; do
 case $yn in
-	[Yy]* ) ls $TEMP/dotfiles/.packlist > packversion.txt
+	[Yy]* ) ls $TEMP/dotfiles/.config/packlist > packversion.txt
 		select PACKLIST in $(cat packversion.txt) diff exit; do
 		case "$PACKLIST" in
 		diff) echo "Choose two packages to compare:" ; 
