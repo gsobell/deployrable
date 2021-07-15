@@ -1,12 +1,11 @@
 #!/bin/bash
 
-echo 'deployrable v1.1.1'
+echo 'deployrable v1.1.2'
 sleep 1
 echo 'MIT License, Copyright (c) 2021 gsobell'
 clear
 
-# Verifying that shell is indeed bash
-if [ ! -n "$BASH" ] 
+if [ ! -n "$BASH" ] # Verifying that shell is indeed bash
 then 
 	echo "Please run this script with bash.";
 	echo "Would you like to attempt to run it anyway? (y/n)"
@@ -38,16 +37,12 @@ fi
 echo 'Cloning dotfile repo to local host'
 git clone https://github.com/gsobell/dotfiles.git
 
-# Initial dotfile deployment
-mkdir -pv $HOME/.i3
+# Initial dotfile deployment 
+# Organized according to strict XDG Base Directory Specification
 
-mv -fv dotfiles/.Xresources	$HOME/.Xresources
-mv -fv dotfiles/.bashrc		$HOME/.bashrc
-mv -fv dotfiles/.bash_profile	$HOME/.bash_profile
-mv -fv dotfiles/.vimrc		$HOME/.vimrc
-mv -fv dotfiles/.i3/config	$HOME/.i3/config
-mv -v	dotfiles/.config/*	$HOME/.config
-mv -v 	dotfiles/.*		$HOME/.*
+cp -fv  dotfiles/.bashrc	$HOME/.bashrc
+cp -fv  dotfiles/.bash_profile	$HOME/.bash_profile
+cp -fvr	dotfiles/.config	$HOME/.config
 
 mkdir -pv ~/Notes
 mkdir -pv ~/"To Read"/Read
@@ -109,7 +104,7 @@ sleep 1
 
 echo "Install packages at this time? (Y/n)"
 read yn
-echo "This host is running $XDG_SESSION_TYPE"
+echo "This host is running $XDG_SESSION_TYPE" # Prints display server
 while true; do
 case $yn in
 	[Yy]* ) ls $TEMP/dotfiles/.packlist > packversion.txt
@@ -140,7 +135,7 @@ case $yn in
 esac
 done
 
-echo "Install Sabaki? (y/n)"
+echo "Install Sabaki? (y/n)" # Place AppImages here. Installing Sabaki and requisite Go engines. 
 read yn
 	while true; do
 	case $yn in
@@ -152,7 +147,7 @@ read yn
 	[Nn]*) echo "Skipping Sabaki and Go Engines."; break ;;
 	esac
 	done
-
+# Automatic background placement; consider using feh
 #if ! command -v nitrogen &> /dev/null && ! command -v feh &> /dev/null ; then echo "No background backend"; 
 #else 		
 #	select BACKGROUND in Default URL; do 
