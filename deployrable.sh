@@ -111,13 +111,13 @@ read yn
 echo "This host is running $XDG_SESSION_TYPE" # Prints display server
 while true; do
 case $yn in
-	[Yy]* ) ls $TEMP/.config/packlist > packversion.txt
-		select PACKLIST in $(cat packversion.txt) diff exit; do
+	[Yy]* ) ls $TEMP/.config/packlist > $TEMP/packversion.txt
+		select PACKLIST in $(cat $TEMP/packversion.txt) diff exit; do
 		case "$PACKLIST" in
 		diff) echo "Choose two packages to compare:" ; 
-			select PACK1 in $(cat packversion.txt); do echo "First package is $PACK1"; break; done;
+			select PACK1 in $(cat $TEMP/packversion.txt); do echo "First package is $PACK1"; break; done;
 			echo "Choose a second package"   	
-			select PACK2 in $(cat packversion.txt); do echo "Second package is $PACK2"; break; done; 
+			select PACK2 in $(cat $TEMP/packversion.txt); do echo "Second package is $PACK2"; break; done; 
 				if ! command -v colordiff &> /dev/null;
 				then  diff	$TEMP/.config/packlist/$PACK1 $TEMP/.config/packlist/$PACK2 ; 	
 				else  colordiff $TEMP/.config/packlist/$PACK1 $TEMP/.config/packlist/$PACK2 ; 
