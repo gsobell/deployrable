@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo 'deployrable v1.1.3'
+echo 'deployrable v1.1.4'
 sleep 1
 echo 'MIT License, Copyright (c) 2021 gsobell'
 clear
@@ -111,27 +111,27 @@ read yn
 echo "This host is running $XDG_SESSION_TYPE" # Prints display server
 while true; do
 case $yn in
-	[Yy]* ) ls $TEMP/.config/packlist > $TEMP/packversion.txt
-		select PACKLIST in $(cat $TEMP/packversion.txt) diff exit; do
+	[Yy]* ) ls ~/.config/packlist > packversion.txt
+		select PACKLIST in $(cat packversion.txt) diff exit; do
 		case "$PACKLIST" in
 		diff) echo "Choose two packages to compare:" ; 
-			select PACK1 in $(cat $TEMP/packversion.txt); do echo "First package is $PACK1"; break; done;
+			select PACK1 in $(cat packversion.txt); do echo "First package is $PACK1"; break; done;
 			echo "Choose a second package"   	
-			select PACK2 in $(cat $TEMP/packversion.txt); do echo "Second package is $PACK2"; break; done; 
+			select PACK2 in $(cat packversion.txt); do echo "Second package is $PACK2"; break; done; 
 				if ! command -v colordiff &> /dev/null;
-				then  diff	$TEMP/.config/packlist/$PACK1 $TEMP/.config/packlist/$PACK2 ; 	
-				else  colordiff $TEMP/.config/packlist/$PACK1 $TEMP/.config/packlist/$PACK2 ; 
+				then  diff	~/.config/packlist/$PACK1 ~/.config/packlist/$PACK2 ; 	
+				else  colordiff ~/.config/packlist/$PACK1 ~/.config/packlist/$PACK2 ; 
 				fi
 			read -p "Press enter to continue"
 			echo "Install one of these packages?"
 			select PACKLIST in $PACK1 $PACK2; do echo "Installing $PACKLIST"; break; done;
-			$PKGMANAGER < $TEMP/.config/packlist/"$PACKLIST"
+			$PKGMANAGER < ~/.config/packlist/"$PACKLIST"
 			break ;;
 		exit) echo "Exiting."
 			break ;;
 		*) echo "$PACKLIST"
 			echo Installing "$PACKLIST";
-			$PKGMANAGER < $TEMP/.config/packlist/"$PACKLIST"
+			$PKGMANAGER < ~/.config/packlist/"$PACKLIST"
 		esac
 		done; break;;
 	[Nn]* ) break;;
