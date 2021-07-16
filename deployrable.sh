@@ -125,13 +125,13 @@ case $yn in
 			read -p "Press enter to continue"
 			echo "Install one of these packages?"
 			select PACKLIST in $PACK1 $PACK2; do echo "Installing $PACKLIST"; break; done;
-			$PKGMANAGER < dotfiles/.packlist/"$PACKLIST"
+			$PKGMANAGER < $TEMP/.config/packlist/"$PACKLIST"
 			break ;;
 		exit) echo "Exiting."
 			break ;;
 		*) echo "$PACKLIST"
 			echo Installing "$PACKLIST";
-			$PKGMANAGER < dotfiles/.packlist/"$PACKLIST"
+			$PKGMANAGER < $TEMP/.config/packlist/"$PACKLIST"
 		esac
 		done; break;;
 	[Nn]* ) break;;
