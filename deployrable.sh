@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo 'deployrable v1.1.2'
+echo 'deployrable v1.1.3'
 sleep 1
 echo 'MIT License, Copyright (c) 2021 gsobell'
 clear
@@ -38,11 +38,15 @@ echo 'Cloning dotfile repo to local host'
 git clone https://github.com/gsobell/dotfiles.git
 
 # Initial dotfile deployment 
-# Organized according to strict XDG Base Directory Specification
+# Organized according to XDG Base Directory Specification when possible
 
 cp -fv  dotfiles/.bashrc	$HOME/.bashrc
 cp -fv  dotfiles/.bash_profile	$HOME/.bash_profile
-cp -fvr	dotfiles/.config	$HOME/.config
+cp -fv  dotfiles/.profile	$HOME/.profile
+cp -fv  dotfiles/.gtkrc-2.0	$HOME/.gtkrc-2.0
+cp -fv  dotfiles/.xinitrc	$HOME/.xinitrc
+
+cp -fvr	dotfiles/.config	$HOME
 
 mkdir -pv ~/Notes
 mkdir -pv ~/"To Read"/Read
