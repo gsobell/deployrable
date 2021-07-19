@@ -90,18 +90,18 @@ else
 				git clone https://aur.archlinux.org/yay.git
 				cd yay
 				makepkg -si
-				PKGMANAGER="yay -S -"
+				PKGMANAGER="yay -S --needed -"
 				
 				if ! command -v yay &> /dev/null
 				then echo "Yay installation failed, fallback to pacman"
 				echo "To install packages from the AUR, try again."
-				PKGMANAGER="pacman -S -"
+				PKGMANAGER="pacman -S --needed -"
 				fi
 			fi
 		else
 		echo 'Paru already installed, refreshing databases'
 		sudo pacman -Syy
-		PKGMANAGER="paru -S -"
+		PKGMANAGER="paru -S --needed -"
 		fi
 fi
 sleep 1
