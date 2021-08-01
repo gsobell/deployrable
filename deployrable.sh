@@ -46,6 +46,8 @@ cp -fv  dotfiles/.profile	$HOME/.profile
 cp -fv  dotfiles/.gtkrc-2.0	$HOME/.gtkrc-2.0
 cp -fv  dotfiles/.xinitrc	$HOME/.xinitrc
 
+cp -fvr	dotfiles/.vim		$HOME
+cp -fvr	dotfiles/.moc		$HOME
 cp -fvr	dotfiles/.config	$HOME
 
 mkdir -pv ~/Notes
